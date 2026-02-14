@@ -18,7 +18,7 @@ export default function Sidebar({ onClose }) {
 
   return (
     <aside className="w-72 h-full bg-[#020617] text-white border-r border-[#053527] flex flex-col relative">
-
+      
       {/* MOBILE CLOSE BUTTON */}
       <div className="lg:hidden flex justify-end p-4 absolute right-0 top-0 z-10">
         <motion.button
@@ -32,20 +32,21 @@ export default function Sidebar({ onClose }) {
 
       {/* MENU */}
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-8 sidebar-scroll">
-
+        
         {(role === "team_lead" || role === "admin") && (
           <Section title="Task Management">
             <Item to="/dashboard" icon={LayoutDashboard} label="Overview" onClick={onClose} />
             <Item to="/tasks/manage" icon={ListTodo} label="All Tasks" onClick={onClose} />
             <Item to="/create-task" icon={PlusSquare} label="Create Task" onClick={onClose} />
+            <Item to="/tasks/my" icon={LayoutDashboard} label="My Task" onClick={onClose} />
           </Section>
 
-
+          
         )}
 
         {(role === "admin" || role === "team_lead") && (
           <Section title="Deparment">
-            <Item to="/view-department" icon={Users} label=" ManageDeparment" onClick={onClose} />
+             <Item to="/view-department" icon={Users} label=" ManageDeparment" onClick={onClose} />
             <Item to="/create-department" icon={Users} label=" Create Deparment" onClick={onClose} />
 
           </Section>
@@ -53,30 +54,30 @@ export default function Sidebar({ onClose }) {
 
 
         {(role === "admin" || role === "team_lead") && (
-          <Section title="Employees">
-            {(role === "admin") && (
-              <Item
-                to="/add-emp"
-                icon={PlusSquare}
-                label="Add Employee"
-                onClick={onClose}
-              />
-            )}
+  <Section title="Employees">
+    {(role === "admin") && (
+      <Item
+        to="/add-emp"
+        icon={PlusSquare}
+        label="Add Employee"
+        onClick={onClose}
+      />
+    )}
 
-            <Item
-              to="/view-emp"
-              icon={Users}
-              label="View Employees"
-              onClick={onClose}
-            />
-          </Section>
-        )}
+    <Item
+      to="/view-emp"
+      icon={Users}
+      label="View Employees"
+      onClick={onClose}
+    />
+  </Section>
+)}
 
 
         {role === "team_member" && (
           <Section title="My Workspace">
             <Item to="/tasks/manage" icon={LayoutDashboard} label="My Dashboard" onClick={onClose} />
-            <Item to="/tasks/manage" icon={LayoutDashboard} label="My Task" onClick={onClose} />
+            <Item to="/tasks/my" icon={LayoutDashboard} label="My Task" onClick={onClose} />
           </Section>
         )}
 
@@ -108,9 +109,10 @@ function Item({ to, icon: Icon, label, onClick }) {
       onClick={onClick}
       className={({ isActive }) =>
         `group relative flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300
-        ${isActive
-          ? "bg-[#053527]/20 text-white ring-1 ring-[#053527]/50"
-          : "text-gray-400 hover:bg-[#053527]/5 hover:text-gray-200"
+        ${
+          isActive
+            ? "bg-[#053527]/20 text-white ring-1 ring-[#053527]/50"
+            : "text-gray-400 hover:bg-[#053527]/5 hover:text-gray-200"
         }`
       }
     >
@@ -120,10 +122,11 @@ function Item({ to, icon: Icon, label, onClick }) {
             {Icon && (
               <Icon
                 size={18}
-                className={`${isActive
+                className={`${
+                  isActive
                     ? "text-[#053527] brightness-150"
                     : "text-gray-500 group-hover:text-[#053527]"
-                  } transition-colors`}
+                } transition-colors`}
               />
             )}
             <span className="truncate">{label}</span>

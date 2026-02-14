@@ -182,7 +182,7 @@ export default function App() {
       <Route
         path="/tasks/my"
         element={
-          <ProtectedRoute allowedRoles={["team_member"]}>
+          <ProtectedRoute allowedRoles={["admin", "team_lead","team_member"]}>
             <Layout>
               <MyTask />
             </Layout>
