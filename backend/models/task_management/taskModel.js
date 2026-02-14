@@ -252,7 +252,7 @@ exports.deleteTask = async (taskId) => {
 };
 
 exports.updateTask = async (taskId, data) => {
-  const {
+  let {
     department_code,
     title,
     description,
@@ -266,6 +266,11 @@ exports.updateTask = async (taskId, data) => {
     estimated_hours,
     remarks
   } = data;
+
+  // ✅ Convert ISO date to MySQL DATE format
+  if (due_date) {
+    due_date = new Date(due_date).toISOString().split("T")[0];
+  }
 
   const [rows] = await db.query(
     `SELECT status FROM tasks WHERE id = ?`,
@@ -304,7 +309,7 @@ exports.updateTask = async (taskId, data) => {
       assigned_to,
       priority,
       task_type,
-      related_asin,
+      related_asin || null,
       task_link,
       due_date,
       estimated_hours,
