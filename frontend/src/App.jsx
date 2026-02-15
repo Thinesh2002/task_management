@@ -6,7 +6,7 @@ import ProtectedRoute from "./config/ProtectedRoute";
 
 import Login from "./Pages/login";
 import Register from "./Pages/team_member/Register";
-import Dashboard from "./Pages/dasboard";
+import Team_leadDashboard from "./Pages/team_lead/index";
 import AdminDashboard from "./Pages/admin_dashboard";
 
 import CreateTask from "./Pages/task/create_task/index";
@@ -50,7 +50,7 @@ export default function App() {
         return "/admin-dashboard";
 
       case "team_lead":
-        return "/tasks/manage";
+        return "/lead-Dashboard";
 
       case "team_member":
         return "/tasks/my";
@@ -190,13 +190,17 @@ export default function App() {
         }
       />
 
+
+
+      
+
       {/* ================= TEAM LEAD DASHBOARD ================= */}
       <Route
-        path="/dashboard"
+        path="/lead-dashboard"
         element={
           <ProtectedRoute allowedRoles={["team_lead"]}>
             <Layout>
-              <Dashboard />
+              <Team_leadDashboard />
             </Layout>
           </ProtectedRoute>
         }

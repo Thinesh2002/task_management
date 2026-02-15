@@ -76,7 +76,6 @@ export default function Sidebar({ onClose }) {
 
         {role === "team_member" && (
           <Section title="My Workspace">
-            <Item to="/tasks/manage" icon={LayoutDashboard} label="My Dashboard" onClick={onClose} />
             <Item to="/tasks/my" icon={LayoutDashboard} label="My Task" onClick={onClose} />
           </Section>
         )}
