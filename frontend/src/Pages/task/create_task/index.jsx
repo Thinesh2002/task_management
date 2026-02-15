@@ -116,30 +116,23 @@ export default function CreateTask() {
 
   if (pageLoading) {
     return (
-      <div className="min-h-screen bg-[#020617] flex items-center justify-center text-gray-400">
+      <div className=" flex items-center justify-center text-gray-400">
         Loading...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#020617] p-6">
-      <div className="max-w-6xl mx-auto">
-
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 text-sm mb-6"
-        >
-          <ArrowLeft size={16} /> Back
-        </button>
+    <div>
+      <div className="">
 
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-[#020617] border border-[#053527]/30 rounded-3xl shadow-2xl overflow-hidden"
+          className=" "
         >
 
-          <div className="p-8 border-b border-[#053527]/20">
+          <div >
             <div className="flex items-center gap-3">
               <ClipboardPlus className="text-emerald-400" size={24} />
               <h2 className="text-2xl font-bold text-white">
